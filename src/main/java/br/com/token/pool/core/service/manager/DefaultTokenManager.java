@@ -1,23 +1,16 @@
-package br.com.token.pool.service.manager;
+package br.com.token.pool.core.service.manager;
 
-import static br.com.token.pool.service.manager.state.TokenManagerState.FETCHING_TOKEN;
-import static br.com.token.pool.service.manager.state.TokenManagerState.TOKEN_NOT_STORED;
-import static br.com.token.pool.service.manager.state.TokenManagerState.TOKEN_STORED;
-import static br.com.token.pool.service.validator.TokenValidator.IS_ACCESS_TOKEN_ABSENT;
-import static br.com.token.pool.service.validator.TokenValidator.IS_EXPIRATION_ABSENT;
-import static br.com.token.pool.service.validator.TokenValidator.IS_TOKEN_ABSENT;
-import static br.com.token.pool.service.validator.TokenValidator.SUCCESS;
+import static br.com.token.pool.core.model.TokenManagerState.FETCHING_TOKEN;
+import static br.com.token.pool.core.model.TokenManagerState.TOKEN_NOT_STORED;
+import static br.com.token.pool.core.model.TokenManagerState.TOKEN_STORED;
 import static org.springframework.beans.factory.config.ConfigurableBeanFactory.SCOPE_PROTOTYPE;
-
-import java.util.EnumSet;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import br.com.token.pool.model.Token;
-import br.com.token.pool.service.manager.state.TokenManagerState;
-import br.com.token.pool.service.refresher.TokenRefresher;
-import br.com.token.pool.service.validator.TokenValidationResult;
+import br.com.token.pool.core.model.Token;
+import br.com.token.pool.core.model.TokenManagerState;
+import br.com.token.pool.core.service.refresher.TokenRefresher;
 
 // TODO IMPLEMENTAR POLICY PARA REFRESH DE TOKEN (TEMPO EXPIRACAO / NULL)
 // TODO IMPLEMENTAR THREAD SAFETY
@@ -37,16 +30,6 @@ public class DefaultTokenManager implements TokenManager {
 		
 		this.tokenRefresher = tokenRefresher;
 		this.managerState = TOKEN_NOT_STORED;
-	}
-	
-	public boolean isTokenValid(Token token) {
-		
-			EnumSet<TokenValidationResult> validationResults = IS_TOKEN_ABSENT
-				.and(IS_ACCESS_TOKEN_ABSENT)
-				.and(IS_EXPIRATION_ABSENT)
-				.apply(token);
-			
-			return SUCCESS.equals(validationResults);
 	}
 
 	public Token getToken() {
