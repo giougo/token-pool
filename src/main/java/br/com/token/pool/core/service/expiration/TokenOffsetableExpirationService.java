@@ -7,9 +7,9 @@ import static br.com.token.pool.core.service.validator.TokenValidationResult.SUC
 
 import org.springframework.stereotype.Component;
 
-import br.com.token.pool.core.model.Token;
-import br.com.token.pool.core.model.TokenExpiration;
-import br.com.token.pool.core.model.TokenExpirationStatus;
+import br.com.token.pool.core.model.token.Token;
+import br.com.token.pool.core.model.token.TokenExpiration;
+import br.com.token.pool.core.model.token.TokenExpirationStatus;
 import br.com.token.pool.core.service.expiration.policy.TokenExpirationOffsetPolicy;
 import br.com.token.pool.core.service.validator.TokenValidationResult;
 

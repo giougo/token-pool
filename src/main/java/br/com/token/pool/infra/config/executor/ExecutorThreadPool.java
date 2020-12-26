@@ -1,4 +1,4 @@
-package br.com.token.pool.core.config.executor;
+package br.com.token.pool.infra.config.executor;
 
 import java.util.concurrent.Executor;
 

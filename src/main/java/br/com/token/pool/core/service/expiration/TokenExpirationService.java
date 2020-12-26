@@ -1,7 +1,7 @@
 package br.com.token.pool.core.service.expiration;
 
-import br.com.token.pool.core.model.Token;
-import br.com.token.pool.core.model.TokenExpirationStatus;
+import br.com.token.pool.core.model.token.Token;
+import br.com.token.pool.core.model.token.TokenExpirationStatus;
 
 public interface TokenExpirationService {
 

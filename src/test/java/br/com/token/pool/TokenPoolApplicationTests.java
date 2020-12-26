@@ -1,4 +1,4 @@
-package br.com.tokin.pool;
+package br.com.token.pool;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

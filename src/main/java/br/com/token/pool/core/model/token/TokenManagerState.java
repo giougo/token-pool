@@ -1,4 +1,4 @@
-package br.com.token.pool.core.model;
+package br.com.token.pool.core.model.token;
 
 public enum TokenManagerState {
 

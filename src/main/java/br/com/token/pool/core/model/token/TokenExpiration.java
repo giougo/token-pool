@@ -1,14 +1,13 @@
-package br.com.token.pool.core.model;
+package br.com.token.pool.core.model.token;
 
-import static br.com.token.pool.core.model.TokenExpirationStatus.EXPIRED;
-import static br.com.token.pool.core.model.TokenExpirationStatus.NOT_EXPIRED;
+import static br.com.token.pool.core.model.token.TokenExpirationStatus.EXPIRED;
+import static br.com.token.pool.core.model.token.TokenExpirationStatus.NOT_EXPIRED;
+import static br.com.token.pool.core.utils.CommonWholeNumbers.ZERO;
 
 import br.com.token.pool.core.utils.TimeUtils;
 
 public class TokenExpiration {
 	
-	private static final long ZERO = 0L;
-
 	private final TokenExpirationStatus expirationStatus;
 	private final Token token;
 	private final long validityOffsetInMilliseconds;
@@ -16,7 +15,7 @@ public class TokenExpiration {
 	
 	private TokenExpiration(Token token) {
 		
-		this(token, ZERO);
+		this(token, ZERO.number);
 	}
 
 	private TokenExpiration(Token token, long tokenMillisecondsExpirationOffset) {
@@ -27,7 +26,7 @@ public class TokenExpiration {
 		
 		this.token = token;
 		
-		this.validityOffsetInMilliseconds = nowTimestampMilliseconds - token.expirationTimestamp() - tokenMillisecondsExpirationOffset;
+		this.validityOffsetInMilliseconds = nowTimestampMilliseconds - token.getExpirationTimestamp() - tokenMillisecondsExpirationOffset;
 		
 		if (validityOffsetInMilliseconds > 0) {
 			
